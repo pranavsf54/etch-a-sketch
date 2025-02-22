@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Etch-a-Sketch</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <form class="getGrids" onsubmit="makeGrids(event)">
+      <p>
+        <label for="gridNum">Grids</label>
+        <input
+          type="number"
+          min="1"
+          max="100"
+          id="gridNum"
+          name="gridNum"
+          placeholder="How many grids? (Max 100)"
+        />
+        <button type="submit">Go</button>
+      </p>
+    </form>
+    <div id="gridContainer"></div>
+  </body>
+</html>

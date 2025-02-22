@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+#gridContainer {
+  display: flex;
+  outline: 2px solid red;
+  flex-wrap: wrap;
+  width: 600px;
+  margin: 20px auto;
+  --grid-num: 4;
+}
+
+.gridItem {
+  background-color: aqua;
+  border: 1px solid black;
+  flex: 0 0 calc(600px / var(--grid-num));
+  height: calc(600px / var(--grid-num));
+  transition: background-color 0.2s;
+}
