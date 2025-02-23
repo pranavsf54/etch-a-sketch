@@ -1,26 +1,155 @@
+/* Universal reset for margin and padding */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html,
 body {
-  margin: 0;
+  width: 100%;
+  height: 100%;
   font-family: "Poppins", sans-serif;
+  color: #333;
+  /* A modern, soft gradient background covering the entire page */
+  background: linear-gradient(135deg, #667eea, #764ba2);
 }
 
+/* Header styling */
+.header {
+  text-align: center;
+  color: #fff;
+  margin-top: 40px; /* space above the header */
+  margin-bottom: 20px; /* space below the header */
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 1rem;
+}
+
+/* Main controls container:
+   - Centered content
+   - Some spacing around
+   - Flexible layout
+*/
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 15px; /* space between controls */
+  margin-bottom: 20px;
+}
+
+/* The form for setting grid size */
+form.getGrids {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Label for the grid input */
+form.getGrids label {
+  color: #fff;
+  font-size: 16px;
+}
+
+/* Grid size input */
+form.getGrids input[type="number"] {
+  width: 80px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* "Go" button */
+form.getGrids button {
+  padding: 8px 12px;
+  background: #fff;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s;
+  border: none;
+  border-radius: 4px;
+}
+form.getGrids button:hover {
+  background: #f0f0f0;
+}
+
+/* Color picker area */
+.color-picker {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.color-picker label {
+  color: #fff;
+  font-size: 16px;
+}
+
+/* Actual color input (square box) */
+.color-picker input[type="color"] {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Rainbow and Reset buttons */
+.controls button {
+  padding: 8px 12px;
+  background: #fff;
+  color: #333;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.controls button:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+/* Grid container styling */
 #gridContainer {
   display: flex;
-  outline: 2px solid red;
   flex-wrap: wrap;
   width: 600px;
-  margin: 20px auto;
-  --grid-num: 4;
+  max-width: 90%; /* allow shrinking on smaller screens */
+  margin: 20px auto 40px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --grid-num: 16;
+  padding: 10px;
 }
 
+/* Grid cells */
 .gridItem {
-  background-color: aqua;
-  border: 1px solid black;
-  flex: 0 0 calc(600px / var(--grid-num));
-  height: calc(600px / var(--grid-num));
-  transition: background-color 0.2s;
+  background-color: var(--grid-color, white);
+  border: 1px solid #ddd;
+  /* Subtract container padding (10px * 2) from the width calculation */
+  flex: 0 0 calc((600px - 20px) / var(--grid-num));
+  height: calc((600px - 20px) / var(--grid-num));
+  transition: filter 0.2s, background-color 0.2s;
+  border-radius: 4px;
+}
+
+/* Responsive adjustment for smaller viewports */
+@media (max-width: 650px) {
+  #gridContainer {
+    width: 90%;
+  }
+  .gridItem {
+    /* Recalculate based on viewport width instead of 600px */
+    flex: 0 0 calc((90vw - 20px) / var(--grid-num));
+    height: calc((90vw - 20px) / var(--grid-num));
+  }
 }
